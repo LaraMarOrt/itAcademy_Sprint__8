@@ -28,7 +28,7 @@
         <div class="flex mt-5">
           <div class="d-flex justify-content-center nav nav-pills">
             <router-link class="link me-2" to="/">HOME </router-link>
-            <router-link class="link ms-2" to="/Naves">STARSHIPS</router-link>
+            <router-link v-if="Logged" class="link ms-2" to="/Naves">STARSHIPS</router-link>
           </div>
         </div>
       </nav>

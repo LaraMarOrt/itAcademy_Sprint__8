@@ -52,6 +52,8 @@
        login() {
          console.log("entralogin");
          this.$store.dispatch("logUser", [this.user, this.pass])
+         debugger;
+         this.$emit('close');
        }
      }
  }

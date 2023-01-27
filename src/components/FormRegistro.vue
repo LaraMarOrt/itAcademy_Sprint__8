@@ -59,7 +59,6 @@ export default {
       this.form.name = ''
       this.form.user = ''
       this.form.pass = ''
-
     },
     onReset(event) {
       event.preventDefault()

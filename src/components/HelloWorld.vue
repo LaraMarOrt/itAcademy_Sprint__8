@@ -3,21 +3,45 @@
     <div>
       <h2 class="mb-5">Bienvenid@</h2>
       <h5 class="mb-5">¿Te gustaría conocer de primera mano toda la información de StarWars?</h5>
-      <b-button variant="warning" @click=irNaves()>Súbete a la nave</b-button>
+      <b-button v-if="Logged" variant="warning" @click=irNaves()>Súbete a la nave</b-button>
+      <b-button v-if="!Logged" variant="warning" @click="showLogin()">Loginate</b-button>
     </div>
-    
+    <Login v-if="this.isLoginVisible == true" @close="closeLogin"></Login>
+      <router-view />
   </div>
 </template>
 
 <script>
+import Login from './Login.vue';
+
 export default {
   name: 'HelloWorld',
+  components: { Login },
+  data() {
+    return {
+      isLoginVisible: false,
+    }
+  },
   methods: {
     irNaves() {
       this.$router.push('/Naves')
     }
+  },
+  computed: {
+    Logged() {
+      return this.$store.getters.getLogedUser != null ? this.$store.getters.getLogedUser.username : null;
+    }
+  },
+  methods: {
+    showLogin() {
+      this.isLoginVisible = true;
+    },
+    closeLogin() {
+      this.isLoginVisible = false;
+    }
   }
 }
+
 </script>
 
 <style scoped>
